@@ -1,0 +1,20 @@
+{
+    "name": "wp63/test",
+    "type": "project",
+    "authors": [{
+        "name": "pug",
+        "email": "pugpaprika21@gmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "files": [
+            "src/functions/helpers.php",
+            "src/functions/route.php",
+            "src/functions/mysqli_db.php",
+            "src/functions/pdo_db.php",
+            "src/classes/Autoload.php",
+            "src/classes/Http.php"
+        ],
+        "psr-4": {}
+    }
+}
