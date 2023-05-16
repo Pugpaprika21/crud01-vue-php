@@ -119,10 +119,10 @@ $url = "../../crud01-vue-php/process/";
                             <tbody>
                                 <tr v-for="(user, index) in userRows" :key="user.user_id">
                                     <td>{{ index + 1 }}</td>
-                                    <td>{{ user.user_name }}</td>
+                                    <td v-if="">{{ user.user_name }}</td>
                                     <td>{{ user.user_pass }}</td>
                                     <td>{{ user.create_date_at }} {{ user.create_time_at }}</td>
-                                    <td></td>
+                                    <td><a class="btn btn-primary btn-sm" @click="getUserById(user.user_id)" role="button">Edit</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -178,6 +178,9 @@ $url = "../../crud01-vue-php/process/";
                 this.userRows = users.data;
 
                 console.log(`users`, this.userRows.length);
+            },
+            getUserById(userId) {
+                console.log(`Get User with ID: ${userId}`);
             }
         },
         mounted() {
