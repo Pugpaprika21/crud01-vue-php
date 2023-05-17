@@ -140,6 +140,10 @@ $url = "../../crud01-vue-php/process/";
 </html>
 
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        $('#crud-vue01').DataTable();
+    });
+
     const {
         createApp
     } = Vue
@@ -187,8 +191,4 @@ $url = "../../crud01-vue-php/process/";
             this.fetchAll();
         },
     }).mount('#app-crud01');
-
-    document.addEventListener("DOMContentLoaded", () => {
-        $('#crud-vue01').DataTable();
-    });
 </script>
