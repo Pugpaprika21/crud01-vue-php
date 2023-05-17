@@ -117,7 +117,7 @@ $url = "../../crud01-vue-php/process/";
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(user, index) in userRows" :key="user.user_id">
+                                <tr v-for="(user, index) in userRows" :key="user.user_id" v-if="setTrue">
                                     <td>{{ index + 1 }}</td>
                                     <td>{{ user.user_name }}</td>
                                     <td>{{ user.user_pass }}</td>
@@ -156,7 +156,8 @@ $url = "../../crud01-vue-php/process/";
                 username: "",
                 password: "",
 
-                userRows: []
+                userRows: [],
+                setTrue: true
             }
         },
         methods: {
@@ -179,9 +180,16 @@ $url = "../../crud01-vue-php/process/";
             },
             async fetchAll() {
                 const users = await axios.get("<?= url_where("{$url}fetchUser.php", array('action_' => 'fetchAll')) ?>");
-                this.userRows = users.data;
+                if (users.data.length > 0) {
+                    this.userRows = users.data;
+                    this.setTrue = true;
+                    console.log(`users`, this.userRows.length);
+                    return;
+                }
 
-                console.log(`users`, this.userRows.length);
+                this.setTrue = false;
+                return;
+
             },
             getUserById(userId) {
                 console.log(`Get User with ID: ${userId}`);
